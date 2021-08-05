@@ -87,7 +87,7 @@ do
     continue
   ;;
   --bg)
-    if [ "${AGENT}" = "alice" ] || [ "${AGENT}" = "faber" ] || [ "${AGENT}" = "acme" ]; then
+    if [ "${AGENT}" = "alice" ] || [ "${AGENT}" = "faber" ] || [ "${AGENT}" = "acme" ] || [ "${AGENT}" = "archimedes" ]; then
       DOCKER_OPTS="-d"
       echo -e "\nRunning in ${AGENT} in the background. Note that you cannot use the command line console in this mode."
       echo To see the logs use: \"docker logs ${AGENT}\".
@@ -129,6 +129,10 @@ if [ "$AGENT" = "faber" ]; then
   AGENT_MODULE="faber"
   AGENT_PORT=8020
   AGENT_PORT_RANGE=8020-8027
+elif [ "$AGENT" = "archimedes" ]; then
+  AGENT_MODULE="archimedes"
+  AGENT_PORT=8020
+  AGENT_PORT_RANGE=8020-8027
 elif [ "$AGENT" = "alice" ]; then
   AGENT_MODULE="alice"
   AGENT_PORT=8030
@@ -142,7 +146,7 @@ elif [ "$AGENT" = "performance" ]; then
   AGENT_PORT=8050
   AGENT_PORT_RANGE=8050-8068
 else
-  echo "Please specify which agent you want to run. Choose from 'faber', 'alice', 'acme', or 'performance'."
+  echo "Please specify which agent you want to run. Choose from 'faber', 'archimedes', 'alice', 'acme', or 'performance'."
   exit 1
 fi
 
